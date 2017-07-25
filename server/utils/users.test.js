@@ -11,13 +11,11 @@ describe('Users', () => {
       id: '1',
       name: 'Mike',
       room: 'Node Course'
-    },
-    {
+    }, {
       id: '2',
       name: 'Jen',
       room: 'React Course'
-    },
-    {
+    }, {
       id: '3',
       name: 'Julie',
       room: 'Node Course'
@@ -27,7 +25,7 @@ describe('Users', () => {
   it('should add new user', () => {
     let users = new Users();
     let user = {
-      id: 123,
+      id: '123',
       name: 'Andrew',
       room: 'The Office Fans'
     };
@@ -37,8 +35,6 @@ describe('Users', () => {
   });
 
   it('should remove a user', () => {
-    // take the id of one of our seed users and pass it to the function
-    // remove user.  Assert that the user was indeed removed.
     let userId = '3';
     var user = users.removeUser(userId);
 
@@ -47,8 +43,6 @@ describe('Users', () => {
   });
 
   it('should not remove user', () => {
-    // pass in an id not part of our seed users, and assert that the array
-    // has not changed
     let userId = '55';
     var user = users.removeUser(userId);
 
@@ -57,7 +51,6 @@ describe('Users', () => {
   });
 
   it('should find user', () => {
-    // pass in a valid id and get the user object back
     let userId = '2';
     let user = users.getUser(userId);
 
@@ -65,7 +58,6 @@ describe('Users', () => {
   });
 
   it('should not find user', () => {
-    // pass in an invalid id and assert that you do not get a user object back.
     let userId = '55';
     let user = users.getUser(userId);
 
@@ -73,14 +65,14 @@ describe('Users', () => {
   });
 
   it('should return names for node course', () => {
-    let resUsers = users.getUserList('Node Course');
+    let userList = users.getUserList('Node Course');
 
-    expect(resUsers).toEqual(['Mike', 'Julie']);
+    expect(userList).toEqual(['Mike', 'Julie']);
   });
 
   it('should return names for react course', () => {
-    let resUsers = users.getUserList('React Course');
+    let userList = users.getUserList('React Course');
 
-    expect(resUsers).toEqual(['Jen']);
+    expect(userList).toEqual(['Jen']);
   });
 });

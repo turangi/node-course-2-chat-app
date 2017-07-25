@@ -60,7 +60,7 @@ socket.on('newLocationMessage', function (message) {
   let formattedTime = moment(message.createdAt).format('h:mm a');
   let template = jQuery('#location-message-template').html();
   let html = Mustache.render(template, {
-    text: message.from,
+    from: message.from,
     url: message.url,
     createdAt: formattedTime
   });
@@ -75,7 +75,6 @@ jQuery('#message-form').on('submit', function (e) {
   let messageTextbox = jQuery('[name=message]');
 
   socket.emit('createMessage', {
-    from: 'User',
     text: messageTextbox.val()
   }, function() {
     messageTextbox.val('')
@@ -99,5 +98,5 @@ locationButton.on('click', function () {
   }, function () {
     locationButton.removeAttr('disabled').text('Send location');
     alert('Unable to fetch location.');
-  })
+  });
 });

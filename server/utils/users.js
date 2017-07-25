@@ -21,7 +21,6 @@ class Users {
     return user;
   }
   removeUser (id) {
-    // return user that was removed - using filter() is recommended, but not the only way
     let user = this.getUser(id);
 
     if (user) {
@@ -29,15 +28,11 @@ class Users {
     }
 
     return user;
-
-
   }
   getUser (id) {
-    // return user object - using filter() is recommended, but not the only way
     return this.users.filter((user) => user.id === id)[0]
   }
   getUserList (room) {
-    // return array of users (as objects) such as ['Mike', 'Jen', 'Caleb']
     let users = this.users.filter((user) => user.room === room);
     let namesArray = users.map((user) => user.name);
 
